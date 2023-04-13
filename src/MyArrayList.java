@@ -27,8 +27,17 @@ private int size = 5;
 
     @Override
     public void remove(int index) {
-         arrayList[index]= null;
-         
+
+deleteElement(index);
+
+
+    }
+    public void deleteElement(int index){
+       arrayList[index]=null;
+       for(int i =index; i<arrayList.length-1; i++){
+           arrayList[i]=arrayList[i+1];
+       }
+
     }
 
     @Override
