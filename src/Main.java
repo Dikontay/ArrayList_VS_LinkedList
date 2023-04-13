@@ -7,6 +7,8 @@ public class Main {
         arr.add(6);
         arr.add(7);
         arr.add(4);
+        arr.add(6);
+        arr.add(6);
       //  System.out.println(arr.size());
 
         for(int i =0; i<arr.size(); i++){

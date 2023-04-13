@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class MyArrayList <E> implements MyList{
-   private int size = 5;
+   private  int size = 5;
    private int index ;
 
    private Object [] arrayList;
@@ -18,6 +18,7 @@ public class MyArrayList <E> implements MyList{
        }
         arrayList[index++]= data;
 
+
     }
 
     @Override
@@ -32,12 +33,14 @@ public class MyArrayList <E> implements MyList{
 
     @Override
     public int size() {
-        return this.size;
+        return index;
     }
     private void increaseSize(){
-      size = (int) (size *1.5);
-        Object [] temp = new Object[size];
-        System.arraycopy(arrayList, 0, temp, 0, size);
+      int biggerSize = (int) (size *1.5);
+        Object [] temp = new Object[biggerSize];
+       for(int i =0; i<arrayList.length; i++){
+           temp[i]= arrayList[i];
+       }
         arrayList = temp;
 
     }
