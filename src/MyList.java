@@ -1,6 +1,6 @@
 public interface MyList <E> {
     void add(E data);
-    int get();
+    E get(int index);
     void remove();
     int size();
 
