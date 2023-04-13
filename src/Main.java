@@ -9,8 +9,8 @@ public class Main {
         arr.add(4);
         arr.add(6);
         arr.add(6);
-      //  System.out.println(arr.size());
-
+      // System.out.println(arr.size());
+arr.remove(3);
         for(int i =0; i<arr.size(); i++){
             System.out.println(arr.get(i)+" ");
         }

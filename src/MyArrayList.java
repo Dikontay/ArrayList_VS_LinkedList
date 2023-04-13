@@ -1,18 +1,17 @@
-import java.util.Arrays;
-
 public class MyArrayList <E> implements MyList{
-   private  int size = 5;
-   private int index ;
 
+   private int index ;
+private int size = 5;
    private Object [] arrayList;
+
    public MyArrayList(){
-         arrayList = new Object[size];
+       arrayList = new Object[size];
    }
 
 
     @Override
     public void add(Object data) {
-       if(index == size){
+       if(index == size()){
            increaseSize();
 
        }
@@ -27,8 +26,9 @@ public class MyArrayList <E> implements MyList{
     }
 
     @Override
-    public void remove() {
-
+    public void remove(int index) {
+         arrayList[index]= null;
+         
     }
 
     @Override
@@ -36,11 +36,9 @@ public class MyArrayList <E> implements MyList{
         return index;
     }
     private void increaseSize(){
-      int biggerSize = (int) (size *1.5);
+      int biggerSize = (int) (arrayList.length *3);
         Object [] temp = new Object[biggerSize];
-       for(int i =0; i<arrayList.length; i++){
-           temp[i]= arrayList[i];
-       }
+        System.arraycopy(arrayList, 0, temp, 0, arrayList.length);
         arrayList = temp;
 
     }
