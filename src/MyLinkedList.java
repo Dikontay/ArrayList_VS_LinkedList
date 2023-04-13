@@ -1,11 +1,32 @@
 public class MyLinkedList <E> implements MyList{
-    @Override
-    public void add(Object data) {
-        
+   private MyNode head;
+   private MyNode tail;
+private int size;
+    public class MyNode <E>{
+        E data;
+        MyNode next;
+        MyNode prev;
+        public MyNode(E data){
+            this.data = data;
+        }
     }
 
     @Override
-    public Object get(int index) {
+    public void add(Object data) {
+          MyNode newNode= new MyNode((E) data);
+          if(head == null){
+              head=tail=newNode;
+          }else{
+              tail.next=newNode;
+              tail=newNode;
+              tail.prev= newNode;
+          }
+          size++;
+
+    }
+
+    @Override
+    public E get(int index) {
         return null;
     }
 
@@ -16,6 +37,6 @@ public class MyLinkedList <E> implements MyList{
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 }

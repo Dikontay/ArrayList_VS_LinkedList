@@ -1,7 +1,7 @@
 public class MyArrayList <E> implements MyList{
 
    private int length ;
-private int size = 5;
+private static final int size = 5;
    private Object [] arrayList;
 
    public MyArrayList(){
