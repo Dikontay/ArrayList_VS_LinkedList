@@ -5,4 +5,5 @@ public interface MyList <E> {
     int size();
 
 
+
 }

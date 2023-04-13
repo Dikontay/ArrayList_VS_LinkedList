@@ -1,6 +1,6 @@
 public class MyArrayList <E> implements MyList{
 
-   private int index ;
+   private int length ;
 private int size = 5;
    private Object [] arrayList;
 
@@ -11,38 +11,38 @@ private int size = 5;
 
     @Override
     public void add(Object data) {
-       if(index == size()){
+       if(length == size()){
            increaseSize();
 
        }
-        arrayList[index++]= data;
+        arrayList[length++]= data;
 
 
     }
 
     @Override
     public Object get(int index) {
+       if(index>=length){
+           throw new IndexOutOfBoundsException();
+       }
         return arrayList[index];
+
     }
 
     @Override
     public void remove(int index) {
+        arrayList[index] = null;
+        for (int i = index; i < arrayList.length - 1; i++) {
+            arrayList[i] = arrayList[i + 1];
+        }
+        length--;
 
-deleteElement(index);
-
-
-    }
-    public void deleteElement(int index){
-       arrayList[index]=null;
-       for(int i =index; i<arrayList.length-1; i++){
-           arrayList[i]=arrayList[i+1];
-       }
 
     }
 
     @Override
     public int size() {
-        return index;
+        return length;
     }
     private void increaseSize(){
       int biggerSize = (int) (arrayList.length *3);

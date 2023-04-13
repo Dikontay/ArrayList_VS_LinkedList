@@ -15,7 +15,7 @@ public class Main {
       // System.out.println(arr.size());
 arr.remove(3);
 
-        for(int i = 0; arr.get(i)!=null ; i++){
+        for(int i = 0; i<arr.size(); i++){
             System.out.println(arr.get(i)+" ");
         }
         //System.out.println(arr.size());
