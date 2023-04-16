@@ -50,20 +50,42 @@ public class MyLinkedList <E> implements MyList{
 
     @Override
     public E remove(int index) {
-      
-    }
 
-    private static class Node<E> {
-        E element;
-        Node<E> prev;
-        Node<E> next;
+        if(index==0){
+            MyNode current=head;
+            current.next=head.next;
+            head = head.next;
+            size--;
+            return current.data;
+        }else if(index==size-1){
+            MyNode  current = tail;
+            tail = current.prev;
+            size--;
+            return current.data;
+        }else {
+            MyNode  temp;
+            if(index > size/2){
+                temp = tail;
+                for(int i = size-1; i>index; i--){
+                    temp = temp.prev;
+                }
+            }else{
+                temp = head;
+                for(int i =0; i<index; i++){
+                    temp = temp.next;
+                }
+            }
+            temp.prev.next=temp.next;
+            temp.next.prev=temp.prev;
+            size--;
+            return temp.data;
 
-        Node(E element, Node<E> prev, Node<E> next) {
-            this.element = element;
-            this.prev = prev;
-            this.next = next;
         }
+
+
     }
+
+
     @Override
     public int size() {
         return size;
@@ -84,17 +106,44 @@ public class MyLinkedList <E> implements MyList{
 
     @Override
     public void add(Object item, int index) {
+         if(index<0||index>=size){
+             throw new IndexOutOfBoundsException();
+         }
+         MyNode newNode = new MyNode((E) item);
+         MyNode temp = head;
+         if(index==0){
+             head.prev=newNode;
+             newNode.next=head;
+             head = newNode;
+             size++;
+             return;
+         }
+         for(int i =0; i<index; i++){
+             temp= temp.next;
+         }
+         if(temp.prev!=null){
+         temp.prev.next=newNode;
 
+         temp.prev=newNode;}
+         size++;
     }
 
     @Override
     public void clear() {
-
+        head = null;
+        tail = null;
+        size =0;
     }
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        MyNode temp = head;
+        int i = size-1;
+        while(temp.data!=o){
+            i--;
+            temp=temp.next;
+        }
+        return i;
     }
 
     @Override
@@ -110,6 +159,9 @@ public class MyLinkedList <E> implements MyList{
 
     @Override
     public void sort() {
+
+    }
+    public void getNode(MyNode temp, int index){
 
     }
 }

@@ -8,10 +8,12 @@ public class Main {
         list.add(9);
         list.add(94);
         list.add(92);
-        list.add(96);
-        list.add(92);
 
-        System.out.println(list.lastIndexOf(92));
+       list.clear();
+
+      for(int i =0; i<list.size(); i++){
+          System.out.println(list.get(i));
+      }
 
 
     }
