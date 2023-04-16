@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MyArrayList <E> implements MyList{
 
    private int length ;
@@ -30,14 +32,14 @@ private static final int size = 5;
     }
 
     @Override
-    public void remove(int index) {
+    public E remove(int index) {
         arrayList[index] = null;
         for (int i = index; i < arrayList.length - 1; i++) {
             arrayList[i] = arrayList[i + 1];
         }
         length--;
 
-
+ return null ;
     }
 
     @Override
@@ -60,17 +62,19 @@ private static final int size = 5;
        if(length==arrayList.length){
        increaseSize();
        }
-       for(int i = length-1; i>=0; i--){
-            arrayList[i]=arrayList[i+1];
+       length++;
+       for(int i = length; i>=index; i--){
+            arrayList[i+1]=arrayList[i];
         }
         arrayList[index]=item;
-
-
-
-    }
+   }
 
     @Override
     public void clear() {
+        for(int i =0; i<length; i++){
+            arrayList[i]=null;
+        }
+        length=0;
 
     }
 
@@ -85,12 +89,16 @@ private static final int size = 5;
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+       int size = length-1;
+       while(arrayList[size]!=o){
+           size--;
+       }
+       return size;
     }
 
     @Override
     public void sort() {
-
+       Arrays.sort(arrayList, 0, length);
     }
 
     private void increaseSize(){
@@ -98,9 +106,7 @@ private static final int size = 5;
         Object [] temp = new Object[biggerSize];
         System.arraycopy(arrayList, 0, temp, 0, arrayList.length);
         arrayList = temp;
-        length++;
 
-
-    }
+   }
 
 }
