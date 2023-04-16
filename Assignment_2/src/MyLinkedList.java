@@ -1,31 +1,44 @@
-public class MyLinkedList <E> implements MyList{
+import java.util.Comparator;
+
+public class MyLinkedList <E extends  Comparable<E>>  implements MyList {
     private MyNode head;
     private MyNode tail;
     private int size;
-    private class MyNode {
+
+
+    public class MyNode  {
         E data;
         MyNode next;
         MyNode prev;
-        public MyNode( E data){
+        public MyNode(E data){
 
             this.data = data;
         }
         public MyNode(){
 
         }
+        public E getData(){
+            return this.data;
+        }
+
+
+
+
     }
+
+
+
 
     @Override
     public void add(Object data) {
-        MyNode newNode = new MyNode((E)data);
-       if(head == null){
-           head= newNode;
-           tail = newNode;
-       } else  {tail.next = newNode;
-        newNode.prev = tail;
-        tail= newNode;}
-       size++;
-
+        MyNode newNode = new MyNode((E) data);
+        if(head == null){
+            head= newNode;
+            tail = newNode;
+        } else  {tail.next = newNode;
+            newNode.prev = tail;
+            tail= newNode;}
+        size++;
     }
 
     @Override
@@ -106,27 +119,30 @@ public class MyLinkedList <E> implements MyList{
 
     @Override
     public void add(Object item, int index) {
-         if(index<0||index>=size){
-             throw new IndexOutOfBoundsException();
-         }
-         MyNode newNode = new MyNode((E) item);
-         MyNode temp = head;
-         if(index==0){
-             head.prev=newNode;
-             newNode.next=head;
-             head = newNode;
-             size++;
-             return;
-         }
-         for(int i =0; i<index; i++){
-             temp= temp.next;
-         }
-         if(temp.prev!=null){
-         temp.prev.next=newNode;
+        if(index<0||index>=size){
+            throw new IndexOutOfBoundsException();
+        }
+        MyNode newNode = new MyNode((E) item);
+        MyNode temp = head;
+        if(index==0){
+            head.prev=newNode;
+            newNode.next=head;
+            head = newNode;
+            size++;
+            return;
+        }
+        for(int i =0; i<index; i++){
+            temp= temp.next;
+        }
+        if(temp.prev!=null){
+            temp.prev.next=newNode;
 
-         temp.prev=newNode;}
-         size++;
+            temp.prev=newNode;}
+        size++;
     }
+
+
+
 
     @Override
     public void clear() {
@@ -159,9 +175,21 @@ public class MyLinkedList <E> implements MyList{
 
     @Override
     public void sort() {
+      boolean isSwapped=true;
+      while(isSwapped){
+          isSwapped = false;
+          MyNode temp = head;
+          while(temp.next!=null){
+            if(temp.data.compareTo(temp.next.data)>0){
+                E t = temp.data;
+                temp.data = temp.next.data;
+                temp.next.data = t;
+                isSwapped = true;
+            }
+              temp = temp.next;
+          }
 
+      }
     }
-    public void getNode(MyNode temp, int index){
 
-    }
 }
