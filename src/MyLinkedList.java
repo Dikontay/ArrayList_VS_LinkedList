@@ -19,7 +19,7 @@ private int size;
           }else{
               tail.next=newNode;
               tail=newNode;
-              tail.prev= newNode;
+
           }
           size++;
 
@@ -38,5 +38,35 @@ private int size;
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
+    }
+
+    @Override
+    public void add(Object item, int index) {
+
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public void sort() {
+
     }
 }
